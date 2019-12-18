@@ -19,7 +19,8 @@
     "gatsby": "^2.18.12",
     "gatsby-source-graphql": "^2.1.28",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "serialize-javascript": "^2.1.2"
   },
   "devDependencies": {
     "prettier": "^1.19.1"
