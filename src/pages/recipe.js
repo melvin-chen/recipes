@@ -1,10 +1,21 @@
 import React from "react";
 import { graphql } from "gatsby";
 
+import Layout from "../components/layout";
+import SEO from "../components/seo";
+
+import { IndexHeader, IndexSubheader } from "../components/Index/IndexComponents/IndexComponentsStyles";
+import IngredientsList from  "../components/Recipe/IngredientsList/IngredientsList";
+
 const Recipe = ({ data }) => {
-  console.log(data.takeshape.getSingleRecipe);
+  const recipeData = data.takeshape.getSingleRecipe;
+  console.log(recipeData);
     return (
-      <div></div>
+    <Layout>
+      <SEO title={recipeData.title} />
+      <IndexHeader level={1}>{recipeData.title}</IndexHeader>
+      <IngredientsList />
+    </Layout>
     );
   };
   
