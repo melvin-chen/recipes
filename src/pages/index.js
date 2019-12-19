@@ -4,13 +4,32 @@ import { graphql } from "gatsby";
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
+import ListCard from "../components/ListCard/ListCard"
+
+/* TODO:
+- Homepage
+  - Render all recipes
+  - Make filter and search for recipes
+- Recipe page
+  - Render ingredients
+  - Render tools
+  - Render steps and images
+- To install
+  - Ant Design
+  - Styled Components
+
+- CLEANUP
+
+- Distant future directions:
+  - split instructions
+ */
 const IndexPage = ({ data }) => {
-  const recipeList = data.takeshape.search;
+  const recipeList = data.takeshape.getSingleRecipeList;
   console.log(recipeList);
   return (
     <Layout>
       <SEO title="Home" />
-      hello
+      <ListCard listItems={recipeList.items}/>
     </Layout>
   );
 };
@@ -20,31 +39,29 @@ export default IndexPage;
 export const query = graphql`
   query {
     takeshape {
-      search {
-        results {
-          _id
-          __typename
-          searchSummary
-          ... on TS_SingleRecipe {
-            ingredientSection {
-              foodItems {
-                item
-              }
-              tools {
-                item
+      getSingleRecipeList {
+        items {
+          title
+          stepSection {
+            section {
+              stepItems {
+                asset {
+                  path
+                  title
+                }
+                step
               }
             }
-            stepSection {
-              section {
-                stepItems {
-                  asset {
-                    sourceUrl
-                    path
-                  }
-                  step
-                }
-                title
-              }
+          }
+          thumbnail {
+            path
+          }
+          ingredientSection {
+            tools {
+              item
+            }
+            foodItems {
+              item
             }
           }
         }
@@ -52,34 +69,3 @@ export const query = graphql`
     }
   }
 `;
-
-/* export const query = graphql`
-  query {
-    takeshape {
-      getSingleRecipe(_id: "f737431c-2615-4965-bb6d-c33331580ab5") {
-        _id
-        ingredientSection {
-          foodItems {
-            item
-          }
-          tools {
-            item
-          }
-        }
-        stepSection {
-          section {
-            stepItems {
-              asset {
-                path
-                sourceUrl
-              }
-              step
-            }
-            title
-          }
-        }
-        title
-      }
-    }
-  }
-` */

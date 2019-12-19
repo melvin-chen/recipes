@@ -15,6 +15,7 @@
     "start:clean": "rm -rf .cache && gatsby develop"
   },
   "dependencies": {
+    "antd": "^3.26.3",
     "dotenv": "^8.2.0",
     "gatsby": "^2.18.12",
     "gatsby-plugin-react-helmet": "^3.1.18",
