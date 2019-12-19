@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/pages/recipe.js"],"names":["Recipe"],"mappings":"2FAAA,gCAQiBA,UANF,WACX,OACE","file":"component---src-pages-recipe-js-42853927cfe50617b27d.js","sourcesContent":["import React from \"react\";\n\nconst Recipe = () => {\n    return (\n      <div></div>\n    );\n  };\n  \n  export default Recipe;"],"sourceRoot":""}
