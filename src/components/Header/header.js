@@ -6,7 +6,6 @@ import {
 
 const Header = ({ siteTitle }) => (
   <HeaderContainer>
-    hello header
     {/* <HeaderWrapper>
       <Link to="/" style={{lineHeight: 0}}>
         <LogoWrapper>

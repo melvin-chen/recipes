@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { graphql } from "gatsby";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
-
-import ListCard from "../components/ListCard/ListCard"
+import { IndexHeader, IndexSubheader } from "../components/Index/IndexComponents/IndexComponentsStyles";
+import Filter from "../components/Index/Filter/Filter"
+import ListCard from "../components/Index/ListCard/ListCard"
 
 /* TODO:
 - Homepage
@@ -23,13 +24,20 @@ import ListCard from "../components/ListCard/ListCard"
 - Distant future directions:
   - split instructions
  */
+
 const IndexPage = ({ data }) => {
   const recipeList = data.takeshape.getSingleRecipeList;
   console.log(recipeList);
+
+  const [titleInput, setTitleInput] = useState("");
+
   return (
     <Layout>
       <SEO title="Home" />
-      <ListCard listItems={recipeList.items}/>
+      <IndexHeader level={1}>Slightly tweaked recipes</IndexHeader>
+      <IndexSubheader>sometimes edited by a couple people</IndexSubheader>
+      <Filter titleFilterCallback={title => setTitleInput(title)}/>
+      <ListCard currentTitleFilter={titleInput} listItems={recipeList.items}/>
     </Layout>
   );
 };

@@ -5,7 +5,6 @@ import {
 
 const Footer = () => (
   <FooterContainer>
-    hello footer
   </FooterContainer>
 );
 export default Footer;
