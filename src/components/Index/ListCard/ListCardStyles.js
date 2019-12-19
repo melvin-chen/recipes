@@ -45,7 +45,7 @@ export const CardContainer = styled.div`
 
 export const LCTitle = styled(Title)`
   &.ant-typography {
-    margin: 20px 0 0;
+    margin: 40px 0 10px;
     font-size: 1.5em;
     text-align: center;
 
@@ -58,15 +58,18 @@ export const LCTitle = styled(Title)`
 export const LCImage = styled.div`
   background-image: url('${props => props.imageUrl}');
   height: 200px;
+  width: 200px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
     height: 150px;
+    width: 150px;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
     height: 100px;
+    width: 100px;
   }
 `;

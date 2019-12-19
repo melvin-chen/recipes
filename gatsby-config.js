@@ -23,6 +23,6 @@ module.exports = {
         // Additional options to pass to node-fetch
         fetchOptions: {}
       }
-    }
+    } //a whole new line
   ]
 };
