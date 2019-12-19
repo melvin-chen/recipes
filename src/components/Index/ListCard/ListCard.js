@@ -10,9 +10,6 @@ import {
 } from "./ListCardStyles";
 
 const ListCard = ({ currentTags, currentTitleFilter, listItems }) => {
-  console.log(listItems)
-  console.log(currentTags);
-  listItems.map(item => currentTags.map(val => {console.log(val.indexOf(item.tags))}))
   return (
     <ListCardContainer>
       {listItems
