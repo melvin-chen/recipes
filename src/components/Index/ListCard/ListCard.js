@@ -7,7 +7,7 @@ import {
   CardContainer,
   LCImage,
   LCTitle
-} from "./listcardstyles";
+} from "./ListCardStyles";
 
 const ListCard = ({ currentTitleFilter, listItems }) => {
   return (
