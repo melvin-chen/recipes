@@ -9,13 +9,15 @@ import {
   LCTitle
 } from "./ListCardStyles";
 
-const ListCard = ({ currentTags, currentTitleFilter, listItems }) => {
+const ListCard = ({ currentType, currentTags, currentTitleFilter, listItems }) => {
+  console.log(currentType);
   return (
     <ListCardContainer>
       {listItems
         .filter(item =>
           (item.title.toLowerCase().includes(currentTitleFilter.toLowerCase())
-          && currentTags.every(val => {return val.indexOf(item.tags) < 0}))
+          && currentTags.every(val => {return val.indexOf(item.tags) < 0})
+          && (!currentType || item.type.type === currentType))
         )
         .map((card, index) => (
           <Card

@@ -1,6 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { FilterContainer, FilterInput } from "./FilterStyles";
-import { Menu, Dropdown, Icon, AutoComplete } from "antd";
+import {
+  FilterContainer,
+  FilterInput,
+  FilterTextInputContainer,
+  RadioContainer,
+  RadioGroup,
+  RadioButton
+} from "./FilterStyles";
+import { Menu, Dropdown, Icon, AutoComplete, Radio } from "antd";
 
 const Filter = props => {
   console.log(props.typeList);
@@ -11,37 +18,36 @@ const Filter = props => {
 
   return (
     <FilterContainer>
-      <FilterInput
-        placeholder="Search title"
-        onChange={event => props.titleFilterCallback(event.target.value)}
-      />
-      <Dropdown overlay={menu(props.typeList)} trigger={["click"]}>
-        <a className="ant-dropdown-link" href="#">
-          Filter Type <Icon type="down" />
-        </a>
-      </Dropdown>
-      <Complete
-        tagsCallback={event => props.tagsFilterCallback(event)}
-        tagsList={props.tagsList}
-      />
+      <FilterTextInputContainer>
+        <FilterInput
+          placeholder="Search title"
+          onChange={event => props.titleFilterCallback(event.target.value)}
+        />
+        <Complete
+          tagsCallback={event => props.tagsFilterCallback(event)}
+          tagsList={props.tagsList}
+        />
+      </FilterTextInputContainer>
+      <RadioContainer>
+        <RadioGroup defaultValue="0">
+          <RadioButton>none</RadioButton>
+          {props.typeList.items
+            .sort((a, b) => {
+              return a.order - b.order;
+            })
+            .map((item, index) => (
+              <RadioButton key={index + 1} value={index}>
+                {item.type}
+              </RadioButton>
+            ))}
+        </RadioGroup>
+      </RadioContainer>
       {/* <FilterInput placeholder="Filter Tags" /> */}
     </FilterContainer>
   );
 };
 
 export default Filter;
-
-const menu = typeList => {
-  return (
-    <Menu>
-      {typeList.items.map((item, index) => (
-        <Menu.Item key={index}>
-          <a href="">{item.type}</a>
-        </Menu.Item>
-      ))}
-    </Menu>
-  );
-};
 
 const Complete = props => {
   let tags = [];
@@ -50,9 +56,9 @@ const Complete = props => {
   });
   return (
     <AutoComplete
-      style={{ width: 200 }}
+      style={{ width: "40%" }}
       dataSource={tags}
-      placeholder="try to type `b`"
+      placeholder="Search tags"
       onSelect={event => props.tagsCallback(event)}
       filterOption={(inputValue, option) =>
         option.props.children

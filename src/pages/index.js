@@ -36,6 +36,7 @@ const IndexPage = ({ data }) => {
 
   const [titleInput, setTitleInput] = useState("");
   const [currentTags, setTagsInput] = useState([]);
+  const [currentType, setCurrentType] = useState("");
   console.log(currentTags);
 
   return (
@@ -45,6 +46,7 @@ const IndexPage = ({ data }) => {
       <IndexSubheader>sometimes edited by a couple people</IndexSubheader>
       <Filter
         titleFilterCallback={title => setTitleInput(title)}
+        typeFilterCallback={selectedType => setCurrentType(selectedType)}
         tagsFilterCallback={selectedTag =>
           currentTags.indexOf(selectedTag) === -1
             ? setTagsInput(old => [...old, selectedTag])
@@ -54,6 +56,7 @@ const IndexPage = ({ data }) => {
         typeList={typeList}
       />
       <ListCard
+        currentType={currentType}
         currentTags={currentTags}
         currentTitleFilter={titleInput}
         listItems={recipeList.items}
@@ -108,6 +111,7 @@ export const query = graphql`
       getTypeList {
         items {
           type
+          order
         }
       }
     }
