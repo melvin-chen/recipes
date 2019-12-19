@@ -5,16 +5,21 @@ import Layout from "../components/layout";
 import SEO from "../components/seo";
 
 import { IndexHeader, IndexSubheader } from "../components/Index/IndexComponents/IndexComponentsStyles";
-import IngredientsList from  "../components/Recipe/IngredientsList/IngredientsList";
+import IngredientsAndToolsList from  "../components/Recipe/IngredientsAndToolsList/IngredientsAndToolsList";
+import StepsList from  "../components/Recipe/StepsList/StepsList";
 
 const Recipe = ({ data }) => {
   const recipeData = data.takeshape.getSingleRecipe;
   console.log(recipeData);
+  const ingredients = recipeData.ingredientSection.foodItems;
+  const tools = recipeData.ingredientSection.tools;
+  const steps = recipeData.stepSection;
     return (
     <Layout>
       <SEO title={recipeData.title} />
       <IndexHeader level={1}>{recipeData.title}</IndexHeader>
-      <IngredientsList />
+      <IngredientsAndToolsList ingredients={ingredients} tools={tools} />
+      <StepsList steps={steps}/>
     </Layout>
     );
   };
