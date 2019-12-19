@@ -13,15 +13,19 @@ import { Link } from "gatsby";
 
 import routes from "../../../routes.js";
 
-const ListCard = ({ currentTitleFilter, listItems }) => {
+const ListCard = ({ currentType, currentTags, currentTitleFilter, listItems }) => {
+  console.log(currentType);
   return (
     <ListCardContainer>
       {listItems
         .filter(item =>
-          item.title.toLowerCase().includes(currentTitleFilter.toLowerCase())
+          (item.title.toLowerCase().includes(currentTitleFilter.toLowerCase())
+          && currentTags.every(val => {return val.indexOf(item.tags) < 0})
+          && (!currentType || item.type.type === currentType))
         )
         .map((card, index) => (
           <Card
+            key={index}
             index={index}
             name={card.title}
             image={getImageUrl(card.thumbnail.path)}
@@ -32,7 +36,6 @@ const ListCard = ({ currentTitleFilter, listItems }) => {
 };
 
 const Card = ({ name, image }) => {
-  console.log(image);
   return (
     <Link to={routes.project(name)}>
     <CardContainer>
