@@ -2,6 +2,7 @@ import { Typography } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 import { SIZES } from "../../../tokens";
+import { Link } from "gatsby";
 
 const { Title } = Typography;
 
@@ -22,7 +23,7 @@ export const ListCardContainer = styled.div`
   }
 `;
 
-export const CardContainer = styled.div`
+export const CardContainer = styled(Link)`
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
