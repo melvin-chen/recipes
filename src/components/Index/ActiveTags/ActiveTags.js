@@ -1,11 +1,24 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { ActiveTagsContainer, ActiveTag } from "./ActiveTagsStyles";
 
 const ActiveTags = props => {
-  return (
-    <ActiveTagsContainer>
-      {console.log(props.currentTags)}
-      {props.currentTags.map((item, index) => (
+  const isClosable = props.isClosable;
+  if (!isClosable) {
+    return (
+      <ActiveTagsContainer>
+        {props.currentTags.map((item, index) => (
+          <ActiveTag key={index} value={item}>
+            {item}
+          </ActiveTag>
+        ))}
+      </ActiveTagsContainer>
+    );
+  } else {
+    return (
+      <ActiveTagsContainer>
+        {props.currentTags.map((item, index) => (
           <ActiveTag
             closable
             onClick={() => props.tagRemoveCallback(item)}
@@ -14,9 +27,14 @@ const ActiveTags = props => {
           >
             {item}
           </ActiveTag>
-      ))}
-    </ActiveTagsContainer>
-  );
+        ))}
+      </ActiveTagsContainer>
+    );
+  }
+};
+
+ActiveTags.defaultProps = {
+  isClosable: true
 };
 
 export default ActiveTags;
