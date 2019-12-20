@@ -14,6 +14,7 @@ export const FilterContainer = styled.div`
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
     padding: 30px 40px;
+    flex-direction: column;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
@@ -21,14 +22,14 @@ export const FilterContainer = styled.div`
   }
 `;
 
-export const FilterTextInputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+// export const FilterTextInputContainer = styled.div`
+//   display: flex;
+//   flex-direction: row;
 
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    flex-direction: column;
-  }
-`;
+//   @media (max-width: ${SIZES.BREAK_MOBILE}) {
+//     flex-direction: column;
+//   }
+// `;
 
 export const TextInputContainer = styled.div`
   flex-direction: column;
@@ -38,7 +39,7 @@ export const TextInputTitle = styled(TextInputContainer)`
   width: 40%;
   margin-right: 10px;
 
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
     width: 100%;
     margin-right: 0;
   }
@@ -48,7 +49,7 @@ export const TextInputTags = styled(TextInputContainer)`
   width: 30%;
   margin-right: 10px;
 
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
     width: 100%;
     margin-top: 15px;
     margin-right: 0;
@@ -70,9 +71,10 @@ export const InputTitle = styled(Title)`
 export const FilterSelectContainer = styled.div`
   width: 30%;
 
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
     width: 100%;
     margin-top: 15px;
+    margin-right: 0;
   }
 `;
 

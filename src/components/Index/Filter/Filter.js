@@ -37,7 +37,10 @@ const Filter = props => {
       </TextInputTags>
       <FilterSelectContainer>
         <InputTitle level={3}>Food Type:</InputTitle>
-        <TypeSelect typeList={props.typeList} />
+        <TypeSelect
+          typeCallback={event => props.typeFilterCallback(event)}
+          typeList={props.typeList}
+        />
       </FilterSelectContainer>
     </FilterContainer>
   );
@@ -55,7 +58,7 @@ const Complete = props => {
       style={{ width: "100%" }}
       dataSource={tags}
       placeholder="Search tags"
-      onSelect={event => props.tagsCallback(event)}
+      onSelect={value => props.tagsCallback(value)}
       filterOption={(inputValue, option) =>
         option.props.children
           .toUpperCase()
@@ -71,6 +74,7 @@ const TypeSelect = props => {
       showSearch
       style={{ width: 200 }}
       placeholder="Food Type"
+      onSelect={(value) => props.typeCallback(value)}
       optionFilterProp="children"
       filterOption={(input, option) =>
         option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
@@ -84,7 +88,7 @@ const TypeSelect = props => {
           return a.order - b.order;
         })
         .map((item, index) => (
-          <Option key={index + 1} value={index}>
+          <Option key={index + 1} value={item.type}>
             {item.type}
           </Option>
         ))}
