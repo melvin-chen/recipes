@@ -1,16 +1,20 @@
-import { Typography, Input, Radio } from "antd";
+import { Typography, Input, Select } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 import { SIZES } from "../../../tokens";
 
+const { Title } = Typography;
+const { Option } = Select;
+
 export const FilterContainer = styled.div`
   display: flex;
-  flex-direction:column;
+  flex-direction: row;
   box-sizing: border-box;
   padding: 30px 80px;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
     padding: 30px 40px;
+    flex-direction: column;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
@@ -18,35 +22,55 @@ export const FilterContainer = styled.div`
   }
 `;
 
-export const FilterTextInputContainer = styled.div`
-  display: flex;
-  flex-direction: row;
+export const TextInputContainer = styled.div`
+  flex-direction: column;
+`;
 
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    flex-direction: column;
+export const TextInputTitle = styled(TextInputContainer)`
+  width: 50%;
+  margin-right: 10px;
+
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
+    width: 100%;
+    margin-right: 0;
+  }
+`;
+
+export const TextInputTags = styled(TextInputContainer)`
+  width: 30%;
+  margin-right: 10px;
+
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
+    width: 100%;
+    margin-top: 15px;
+    margin-right: 0;
   }
 `;
 
 export const FilterInput = styled(Input)`
   &.ant-input {
-      width: 60%;
-      margin-right: 10px;
+    width: 100%;
   }
 `;
 
-export const RadioContainer = styled.div`
-  margin-top: 15px;
-`;
-
-export const RadioGroup = styled(Radio.Group)`
-  &.ant-radio-group{
-    display: flex;
+export const InputTitle = styled(Title)`
+  &.ant-typography {
+    font-size: 1.25em;
   }
 `;
 
-export const RadioButton = styled(Radio.Button)`
-  &.ant-radio-button-wrapper{
-    flex-grow: 1;
-    text-align: center;
+export const FilterSelectContainer = styled.div`
+  width: 20%;
+
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
+    width: 100%;
+    margin-top: 15px;
+    margin-right: 0;
   }
+`;
+
+export const FilterSelect = styled(Select)`
+`;
+
+export const FilterOption = styled(Option)`
 `;

@@ -9,19 +9,36 @@ import {
   LCTitle
 } from "./ListCardStyles";
 
-import { Link } from "gatsby";
-
 import routes from "../../../routes.js";
 
-const ListCard = ({ currentType, currentTags, currentTitleFilter, listItems }) => {
+const ListCard = ({
+  currentType,
+  currentTags,
+  currentTitleFilter,
+  listItems
+}) => {
   console.log(currentType);
   return (
     <ListCardContainer>
       {listItems
-        .filter(item =>
-          (item.title.toLowerCase().includes(currentTitleFilter.toLowerCase())
-          && currentTags.every(val => {return val.indexOf(item.tags) < 0})
-          && (!currentType || item.type.type === currentType))
+        .filter(
+          item =>
+            //title search query
+            item.title
+              .toLowerCase()
+              .includes(currentTitleFilter.toLowerCase()) &&
+            //tag search query
+            currentTags.every(val => {
+              let itemtags = [];
+              item.tags.forEach(element => {
+                itemtags.push(element.name);
+              });
+              return itemtags.includes(val);
+            }) &&
+            //type query
+            (!currentType ||
+              currentType === "none" ||
+              item.type.type === currentType)
         )
         .map((card, index) => (
           <Card
@@ -37,12 +54,10 @@ const ListCard = ({ currentType, currentTags, currentTitleFilter, listItems }) =
 
 const Card = ({ name, image }) => {
   return (
-    <Link to={routes.project(name)}>
-    <CardContainer>
+    <CardContainer to={routes.project(name)}>
       <LCImage imageUrl={image} />
       <LCTitle level={2}>{name}</LCTitle>
     </CardContainer>
-    </Link>
   );
 };
 

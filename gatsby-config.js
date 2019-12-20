@@ -3,10 +3,16 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `Recipes`,
-    description: `Definitely not a stolen recipes made for easier access`,
+    description: `Definitely not stolen recipes made for easier access`,
     author: `Mel`
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        // Add any options here
+      }
+    },
     "gatsby-plugin-react-helmet",
     {
       resolve: "gatsby-source-graphql",

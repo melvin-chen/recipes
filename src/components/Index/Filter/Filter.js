@@ -2,12 +2,15 @@ import React, { useState, useEffect } from "react";
 import {
   FilterContainer,
   FilterInput,
-  FilterTextInputContainer,
-  RadioContainer,
-  RadioGroup,
-  RadioButton
+  FilterSelectContainer,
+  FilterSelect,
+  TextInputTitle,
+  TextInputTags,
+  InputTitle
 } from "./FilterStyles";
-import { Menu, Dropdown, Icon, AutoComplete, Radio } from "antd";
+import { AutoComplete, Select } from "antd";
+
+const { Option } = Select;
 
 const Filter = props => {
   console.log(props.typeList);
@@ -18,31 +21,27 @@ const Filter = props => {
 
   return (
     <FilterContainer>
-      <FilterTextInputContainer>
+      <TextInputTitle>
+        <InputTitle level={3}>Search Title:</InputTitle>
         <FilterInput
           placeholder="Search title"
           onChange={event => props.titleFilterCallback(event.target.value)}
         />
+      </TextInputTitle>
+      <TextInputTags>
+        <InputTitle level={3}>Search Tags:</InputTitle>
         <Complete
           tagsCallback={event => props.tagsFilterCallback(event)}
           tagsList={props.tagsList}
         />
-      </FilterTextInputContainer>
-      <RadioContainer>
-        <RadioGroup defaultValue="0">
-          <RadioButton>none</RadioButton>
-          {props.typeList.items
-            .sort((a, b) => {
-              return a.order - b.order;
-            })
-            .map((item, index) => (
-              <RadioButton key={index + 1} value={index}>
-                {item.type}
-              </RadioButton>
-            ))}
-        </RadioGroup>
-      </RadioContainer>
-      {/* <FilterInput placeholder="Filter Tags" /> */}
+      </TextInputTags>
+      <FilterSelectContainer>
+        <InputTitle level={3}>Category:</InputTitle>
+        <TypeSelect
+          typeCallback={event => props.typeFilterCallback(event)}
+          typeList={props.typeList}
+        />
+      </FilterSelectContainer>
     </FilterContainer>
   );
 };
@@ -54,17 +53,46 @@ const Complete = props => {
   props.tagsList.items.forEach(element => {
     tags.push(element.name);
   });
+  
   return (
     <AutoComplete
-      style={{ width: "40%" }}
+      style={{ width: "100%" }}
       dataSource={tags}
       placeholder="Search tags"
-      onSelect={event => props.tagsCallback(event)}
+      allowClear
+      onSelect={value => props.tagsCallback(value)}
       filterOption={(inputValue, option) =>
         option.props.children
           .toUpperCase()
           .indexOf(inputValue.toUpperCase()) !== -1
       }
     />
+  );
+};
+
+const TypeSelect = props => {
+  return (
+    <FilterSelect
+      style={{ width: "100%" }}
+      placeholder="Category"
+      onSelect={(value) => props.typeCallback(value)}
+      optionFilterProp="children"
+      filterOption={(input, option) =>
+        option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+      }
+    >
+      <Option key={0} value="none">
+        none
+      </Option>
+      {props.typeList.items
+        .sort((a, b) => {
+          return a.order - b.order;
+        })
+        .map((item, index) => (
+          <Option key={index + 1} value={item.type}>
+            {item.type}
+          </Option>
+        ))}
+    </FilterSelect>
   );
 };
