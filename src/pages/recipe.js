@@ -10,10 +10,14 @@ import StepsList from  "../components/Recipe/StepsList/StepsList";
 
 const Recipe = ({ data }) => {
   const recipeData = data.takeshape.getSingleRecipe;
-  console.log(recipeData);
-  const ingredients = recipeData.ingredientSection.foodItems;
-  const tools = recipeData.ingredientSection.tools;
-  const steps = recipeData.stepSection;
+  if (!recipeData) {
+    return(
+      <p>Nothing</p>
+    )
+  }
+  const ingredients = recipeData.ingredientSection.foodItems ? recipeData.ingredientSection.foodItems : [];
+  const tools = recipeData.ingredientSection.tools ? recipeData.ingredientSection.tools : [];
+  const steps = recipeData.stepSection ? recipeData.stepSection : [];
     return (
     <Layout>
       <SEO title={recipeData.title} />
