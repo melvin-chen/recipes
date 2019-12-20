@@ -28,7 +28,7 @@ const Recipe = ({ data }) => {
 
 
 export const query = graphql`
-query($recipeId: ID!)  {
+query($recipeId: ID = "d")  {
   takeshape {
     getSingleRecipe(_id: $recipeId) {
       _id
