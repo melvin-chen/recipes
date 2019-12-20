@@ -10,11 +10,11 @@ export const IndexHeader = styled(Title)`
   margin: 30px 80px 0;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
-    margin: 0 40px;
+    margin: 30px 40px 0;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    margin: 0 20px;
+    margin: 30px 20px 0;
   }
 `;
 

@@ -9,6 +9,7 @@ import {
 } from "../components/Index/IndexComponents/IndexComponentsStyles";
 import Filter from "../components/Index/Filter/Filter";
 import ListCard from "../components/Index/ListCard/ListCard";
+import ActiveTags from "../components/Index/ActiveTags/ActiveTags";
 
 /* TODO:
 - Homepage
@@ -37,7 +38,14 @@ const IndexPage = ({ data }) => {
   const [titleInput, setTitleInput] = useState("");
   const [currentTags, setTagsInput] = useState([]);
   const [currentType, setCurrentType] = useState("");
-  console.log(currentTags);
+
+  const handleRemoveTag = selectedTag => {
+    console.log(selectedTag);
+    console.log(currentTags);
+    let copy = currentTags.filter(tag => tag !== selectedTag);
+    console.log(copy);
+    setTagsInput(copy);
+  };
 
   return (
     <Layout>
@@ -52,8 +60,13 @@ const IndexPage = ({ data }) => {
             ? setTagsInput(old => [...old, selectedTag])
             : null
         }
+        // tagsFilterCallback={(event) => console.log('nonon')}
         tagsList={tagsList}
         typeList={typeList}
+      />
+      <ActiveTags
+        currentTags={currentTags}
+        tagRemoveCallback={selectedTag => handleRemoveTag(selectedTag)}
       />
       <ListCard
         currentType={currentType}

@@ -36,7 +36,7 @@ const Filter = props => {
         />
       </TextInputTags>
       <FilterSelectContainer>
-        <InputTitle level={3}>Food Type:</InputTitle>
+        <InputTitle level={3}>Category:</InputTitle>
         <TypeSelect
           typeCallback={event => props.typeFilterCallback(event)}
           typeList={props.typeList}
@@ -53,11 +53,13 @@ const Complete = props => {
   props.tagsList.items.forEach(element => {
     tags.push(element.name);
   });
+  
   return (
     <AutoComplete
       style={{ width: "100%" }}
       dataSource={tags}
       placeholder="Search tags"
+      allowClear
       onSelect={value => props.tagsCallback(value)}
       filterOption={(inputValue, option) =>
         option.props.children
@@ -71,9 +73,8 @@ const Complete = props => {
 const TypeSelect = props => {
   return (
     <FilterSelect
-      showSearch
-      style={{ width: 200 }}
-      placeholder="Food Type"
+      style={{ width: "100%" }}
+      placeholder="Category"
       onSelect={(value) => props.typeCallback(value)}
       optionFilterProp="children"
       filterOption={(input, option) =>
@@ -95,24 +96,3 @@ const TypeSelect = props => {
     </FilterSelect>
   );
 };
-
-// ReactDOM.render(
-//   <Select
-//     showSearch
-//     style={{ width: 200 }}
-//     placeholder="Select a person"
-//     optionFilterProp="children"
-//     onChange={onChange}
-//     onFocus={onFocus}
-//     onBlur={onBlur}
-//     onSearch={onSearch}
-//     filterOption={(input, option) =>
-//       option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-//     }
-//   >
-//     <Option value="jack">Jack</Option>
-//     <Option value="lucy">Lucy</Option>
-//     <Option value="tom">Tom</Option>
-//   </Select>,
-//   mountNode,
-// );
