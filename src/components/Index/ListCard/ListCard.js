@@ -27,12 +27,14 @@ const ListCard = ({
             item.title
               .toLowerCase()
               .includes(currentTitleFilter.toLowerCase()) &&
-
             //tag search query
             currentTags.every(val => {
-              return val.indexOf(item.tags) < 0;
+              let itemtags = [];
+              item.tags.forEach(element => {
+                itemtags.push(element.name);
+              });
+              return itemtags.includes(val);
             }) &&
-            
             //type query
             (!currentType ||
               currentType === "none" ||

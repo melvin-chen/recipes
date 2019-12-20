@@ -22,21 +22,12 @@ export const FilterContainer = styled.div`
   }
 `;
 
-// export const FilterTextInputContainer = styled.div`
-//   display: flex;
-//   flex-direction: row;
-
-//   @media (max-width: ${SIZES.BREAK_MOBILE}) {
-//     flex-direction: column;
-//   }
-// `;
-
 export const TextInputContainer = styled.div`
   flex-direction: column;
 `;
 
 export const TextInputTitle = styled(TextInputContainer)`
-  width: 40%;
+  width: 50%;
   margin-right: 10px;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
@@ -69,7 +60,7 @@ export const InputTitle = styled(Title)`
 `;
 
 export const FilterSelectContainer = styled.div`
-  width: 30%;
+  width: 20%;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
     width: 100%;
