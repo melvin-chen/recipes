@@ -9,6 +9,10 @@ import {
   LCTitle
 } from "./ListCardStyles";
 
+import { Link } from "gatsby";
+
+import routes from "../../../routes.js";
+
 const ListCard = ({ currentType, currentTags, currentTitleFilter, listItems }) => {
   console.log(currentType);
   return (
@@ -33,10 +37,12 @@ const ListCard = ({ currentType, currentTags, currentTitleFilter, listItems }) =
 
 const Card = ({ name, image }) => {
   return (
+    <Link to={routes.project(name)}>
     <CardContainer>
       <LCImage imageUrl={image} />
       <LCTitle level={2}>{name}</LCTitle>
     </CardContainer>
+    </Link>
   );
 };
 
