@@ -7,7 +7,7 @@ const StepsList = ( { steps }) => {
     const isMultiSections = steps.section.length > 1;
 
     return(
-        <StepsListContainer span={16}>
+        <StepsListContainer xs={24} m={16} lg={16}>
         { steps.section.map((s) => <Section section={s} showTitle={isMultiSections}/>)}
         </StepsListContainer>
     );
@@ -16,6 +16,7 @@ const StepsList = ( { steps }) => {
 const Section = ({ section, showTitle }) => {
     return (
         <div>
+        <h1>Steps</h1>
         { showTitle && <h1>{section.title}</h1> }
         <ol>
         { section.stepItems && section.stepItems.map(({step}) => <Step step={step}/>)}
