@@ -14,6 +14,7 @@ import ListCard from "../components/Index/ListCard/ListCard";
 import { Sun, Moon } from "react-feather";
 import { CustomContentWrapper } from "../components/Base/ContentWrapperStyles";
 
+var ExecutionEnvironment = require("exenv");
 /* TODO:
 - Homepage
   - Render all recipes
@@ -46,10 +47,12 @@ const IndexPage = ({ data }) => {
 
   //This is bad practice to manipulate dom directly but necessary to toggle dom body color
   const toggleBodyColor = isDark => {
-    document.body.style.transition = "background-color 300ms"
-    isDark
-      ? (document.body.style.backgroundColor = "#000000")
-      : (document.body.style.backgroundColor = "#fff");
+    if (ExecutionEnvironment.canUseDOM) {
+      document.body.style.transition = "background-color 300ms";
+      isDark
+        ? (document.body.style.backgroundColor = "#000000")
+        : (document.body.style.backgroundColor = "#fff");
+    }
   };
 
   const toggleLightMode = isDark => {
@@ -58,7 +61,7 @@ const IndexPage = ({ data }) => {
     let expirationDate = new Date();
     expirationDate.setDate(today.getDate() + 30);
 
-    setCookie("isDark", isDark, {expires: expirationDate});
+    setCookie("isDark", isDark, { expires: expirationDate });
     toggleBodyColor(isDark);
   };
 
