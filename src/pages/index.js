@@ -27,6 +27,8 @@ import ActiveTags from "../components/Index/ActiveTags/ActiveTags";
 
 - Distant future directions:
   - split instructions
+
+- test netlify
  */
 
 const IndexPage = ({ data }) => {
