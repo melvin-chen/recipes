@@ -18,7 +18,6 @@ const ActiveTags = props => {
         ))}
       </ActiveTagsContainer>
     );
-  }
 };
 
 ActiveTags.defaultProps = {
