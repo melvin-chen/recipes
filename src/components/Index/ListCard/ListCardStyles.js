@@ -31,12 +31,10 @@ export const CardContainer = styled(Link)`
   box-sizing: border-box;
   width: 23%;
   margin-top: 30px;
-  background-color: #fff;
-  border: 1px solid #ececec;
+  background-color: ${props => props.isDark ? "#232323" : "#fff" };
+  border: ${props => props.isDark ? "none" : "1px solid #ececec" };
   background-clip: content-box;
-  // border: none;
   border-radius: 5px;
-  // box-shadow: 0 0 10px #0000001c;
   transition: box-shadow 100ms;
 
   &:hover {

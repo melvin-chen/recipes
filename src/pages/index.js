@@ -1,16 +1,20 @@
 import React, { useState } from "react";
 import { graphql } from "gatsby";
+import { useCookies, withCookies } from "react-cookie";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 import {
   IndexHeader,
-  IndexSubheader
+  IndexSubheader,
+  DarkSwitch
 } from "../components/Index/IndexComponents/IndexComponentsStyles";
 import Filter from "../components/Index/Filter/Filter";
 import ListCard from "../components/Index/ListCard/ListCard";
-import ActiveTags from "../components/Index/ActiveTags/ActiveTags";
+import { Sun, Moon } from "react-feather";
+import { CustomContentWrapper } from "../components/Base/ContentWrapperStyles";
 
+var ExecutionEnvironment = require("exenv");
 /* TODO:
 - Homepage
   - Render all recipes
@@ -39,43 +43,64 @@ const IndexPage = ({ data }) => {
   const [titleInput, setTitleInput] = useState("");
   const [currentTags, setTagsInput] = useState([]);
   const [currentType, setCurrentType] = useState("");
+  const [cookies, setCookie] = useCookies(["isDark"]);
 
-  const handleRemoveTag = selectedTag => {
-    let copy = currentTags.filter(tag => tag !== selectedTag);
-    setTagsInput(copy);
+  //This is bad practice to manipulate dom directly but necessary to toggle dom body color
+  const toggleBodyColor = isDark => {
+    if (ExecutionEnvironment.canUseDOM) {
+      document.body.style.transition = "background-color 300ms";
+      isDark
+        ? (document.body.style.backgroundColor = "#000000")
+        : (document.body.style.backgroundColor = "#fff");
+    }
   };
+
+  const toggleLightMode = isDark => {
+    // cookie will last 30 days
+    const today = new Date();
+    let expirationDate = new Date();
+    expirationDate.setDate(today.getDate() + 30);
+
+    setCookie("isDark", isDark, { expires: expirationDate });
+    toggleBodyColor(isDark);
+  };
+
+  toggleBodyColor(cookies.isDark === "true");
 
   return (
     <Layout>
       <SEO title="Home" />
-      <IndexHeader level={1}>Slightly tweaked recipes</IndexHeader>
-      <IndexSubheader>sometimes edited by a couple people</IndexSubheader>
-      <Filter
-        titleFilterCallback={title => setTitleInput(title)}
-        typeFilterCallback={selectedType => setCurrentType(selectedType)}
-        tagsFilterCallback={selectedTag =>
-          currentTags.indexOf(selectedTag) === -1
-            ? setTagsInput(old => [...old, selectedTag])
-            : null
-        }
-        tagsList={tagsList}
-        typeList={typeList}
-      />
-      <ActiveTags
-        currentTags={currentTags}
-        tagRemoveCallback={selectedTag => handleRemoveTag(selectedTag)}
-      />
-      <ListCard
-        currentType={currentType}
-        currentTags={currentTags}
-        currentTitleFilter={titleInput}
-        listItems={recipeList.items}
-      />
+      <CustomContentWrapper isDark={cookies.isDark === "true"}>
+        <DarkSwitch
+          unCheckedChildren={<Sun size={14} style={{ display: "block" }} />}
+          checkedChildren={<Moon size={16} style={{ display: "block" }} />}
+          defaultChecked={cookies.isDark === "true"}
+          onChange={checked => {
+            toggleLightMode(checked);
+          }}
+        />
+        <IndexHeader level={1}>Slightly tweaked recipes</IndexHeader>
+        <IndexSubheader>sometimes edited by a couple people</IndexSubheader>
+        <Filter
+          titleFilterCallback={title => setTitleInput(title)}
+          typeFilterCallback={selectedType => setCurrentType(selectedType)}
+          tagsFilterCallback={selectedTags => setTagsInput(selectedTags)}
+          tagsList={tagsList}
+          typeList={typeList}
+        />
+        <ListCard
+          currentType={currentType}
+          currentTags={currentTags}
+          currentTitleFilter={titleInput}
+          listItems={recipeList.items}
+          isDark={cookies.isDark === "true"}
+        />
+      </CustomContentWrapper>
     </Layout>
   );
 };
 
-export default IndexPage;
+export default withCookies(IndexPage);
 
 export const query = graphql`
   query {

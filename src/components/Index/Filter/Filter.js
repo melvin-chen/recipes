@@ -8,12 +8,11 @@ import {
   TextInputTags,
   InputTitle
 } from "./FilterStyles";
-import { AutoComplete, Select } from "antd";
+import { Select } from "antd";
 
 const { Option } = Select;
 
 const Filter = props => {
-
   return (
     <FilterContainer>
       <TextInputTitle>
@@ -25,8 +24,8 @@ const Filter = props => {
       </TextInputTitle>
       <TextInputTags>
         <InputTitle level={3}>Search Tags:</InputTitle>
-        <Complete
-          tagsCallback={event => props.tagsFilterCallback(event)}
+        <TagsSelect
+          tagsCallback={selectedTags => props.tagsFilterCallback(selectedTags)}
           tagsList={props.tagsList}
         />
       </TextInputTags>
@@ -43,25 +42,25 @@ const Filter = props => {
 
 export default Filter;
 
-const Complete = props => {
+const TagsSelect = props => {
   let tags = [];
   props.tagsList.items.forEach(element => {
     tags.push(element.name);
   });
-  
+
   return (
-    <AutoComplete
+    <Select
+      mode="multiple"
       style={{ width: "100%" }}
-      dataSource={tags}
-      placeholder="Search tags"
-      allowClear
-      onSelect={value => props.tagsCallback(value)}
-      filterOption={(inputValue, option) =>
-        option.props.children
-          .toUpperCase()
-          .indexOf(inputValue.toUpperCase()) !== -1
-      }
-    />
+      placeholder="Please select"
+      onChange={selectedTags => props.tagsCallback(selectedTags)}
+    >
+      {props.tagsList.items.map((tag, index) => (
+        <Option key={index} value={tag.name}>
+          {tag.name}
+        </Option>
+      ))}
+    </Select>
   );
 };
 
@@ -70,7 +69,7 @@ const TypeSelect = props => {
     <FilterSelect
       style={{ width: "100%" }}
       placeholder="Category"
-      onSelect={(value) => props.typeCallback(value)}
+      onSelect={value => props.typeCallback(value)}
       optionFilterProp="children"
       filterOption={(input, option) =>
         option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0

@@ -13,7 +13,7 @@ import StepsList from "../components/Recipe/StepsList/StepsList";
 import RecipeThumbnail from "../components/Recipe/RecipeThumbnail/RecipeThumbnail";
 import BackButton from "../components/Recipe/BackButton/BackButton";
 
-import ActiveTags from "../components/Index/ActiveTags/ActiveTags";
+// import ActiveTags from "../components/Index/ActiveTags/ActiveTags";
 
 const Recipe = ({ data }) => {
   const recipeData = data.takeshape.getSingleRecipe;
@@ -40,11 +40,11 @@ const Recipe = ({ data }) => {
       <BackButton />
       <IndexHeader level={1}>{recipeData.title}</IndexHeader>
       <RecipeThumbnail path={thumbnail.path} />
-      <ActiveTags
+      {/* <ActiveTags
         isClosable={false}
         currentTags={currentTags}
         tagRemoveCallback={() => console.log("clicked")}
-      />
+      /> */}
       <IngredientsAndToolsList ingredients={ingredients} tools={tools} />
       <StepsList steps={steps} />
     </Layout>
