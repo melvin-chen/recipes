@@ -31,18 +31,18 @@ export const CardContainer = styled(Link)`
   box-sizing: border-box;
   width: 23%;
   margin-top: 30px;
-  padding: 25px;
-
+  background-color: #fff;
+  border: 1px solid #ececec;
   background-clip: content-box;
-  border: none;
+  // border: none;
   border-radius: 5px;
-  box-shadow: 0 0 10px #0000001c;
+  // box-shadow: 0 0 10px #0000001c;
   transition: box-shadow 100ms;
 
   &:hover {
     border-color: #40a9ff;
     // border: 1px solid #40a9ff;
-    box-shadow: 0 0 0 1px #40a9ff, 0 0 0 3px rgba(24, 144, 255, 0.2);
+    box-shadow: 0 0 0 3px #1890ff33, 0 0 0 0.25px #40a9ff;
   }
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
@@ -57,17 +57,17 @@ export const CardContainer = styled(Link)`
 
 export const LCTitle = styled(Title)`
   &.ant-typography {
-    margin: 40px 0 10px;
+    margin: 20px 25px 35px;
     font-size: 1.5em;
     text-align: center;
 
     @media (max-width: ${SIZES.BREAK_TABLET}) {
       font-size: 1.25em;
-      margin: 30px 0 10px;
+      margin: 20px 25px 35px;
     }
 
     @media (max-width: ${SIZES.BREAK_TABLET}) {
-      margin: 30px 0 0;
+      margin: 20px 25px 35px;
     }
   }
 `;
@@ -75,20 +75,21 @@ export const LCTitle = styled(Title)`
 export const LCImage = styled.div`
   background-image: url('${props => props.imageUrl}');
   height: 200px;
-  width: 100%;
+  // width: 100%;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 50% 50%;
   border-radius: 3px;
+  margin: 25px 25px 0;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
     height: 150px;
-    width: 100%;
+    // width: 100%;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
     height: 200px;
-    width: 100%;
+    // width: 100%;
   }
 `;
 
