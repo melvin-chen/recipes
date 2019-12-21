@@ -5,13 +5,14 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-import Footer from "../components/Footer/Footer"
+import React from "react";
+import PropTypes from "prop-types";
+import { useStaticQuery, graphql } from "gatsby";
+import Footer from "../components/Footer/Footer";
 
-import Header from "../components/Header/header"
-import "./layout.css"
+import Header from "../components/Header/header";
+import { StyledBody } from "./Base/LayoutStyles";
+import { CookiesProvider } from "react-cookie";
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -22,36 +23,31 @@ const Layout = ({ children }) => {
         }
       }
     }
-  `)
+  `);
 
-  return (
-    (!data ? 
-      <p>Loading</p> :
+  return !data ? (
+    <p>Loading</p>
+  ) : (
+    <CookiesProvider>
       <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+        <Header siteTitle={data.site.siteMetadata.title} />
 
-      <div
-        style={{
-          margin: `0 auto`,
-          paddingTop: 0,
-        }}
-      >
-        <main>{children}</main>
-        <Footer
-        />
-        {/* <footer>
+        <StyledBody>
+          <main>{children}</main>
+          <Footer />
+          {/* <footer>
           © {new Date().getFullYear()}, Built with
           {` `}
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer> */}
-      </div>
-    </>)
-  )
-}
+        </StyledBody>
+      </>
+    </CookiesProvider>
+  );
+};
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
+  children: PropTypes.node.isRequired
+};
 
-export default Layout
-
+export default Layout;

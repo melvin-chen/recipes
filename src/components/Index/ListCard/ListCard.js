@@ -13,12 +13,14 @@ import {
 } from "./ListCardStyles";
 
 import routes from "../../../routes.js";
+import { useCookies } from "react-cookie";
 
 const ListCard = ({
   currentType,
   currentTags,
   currentTitleFilter,
-  listItems
+  listItems,
+  isDark
 }) => {
 
   let postFilterList = listItems.filter(
@@ -45,6 +47,7 @@ const ListCard = ({
             index={index}
             name={card.title}
             image={getImageUrl(card.thumbnail.path)}
+            isDark={isDark}
           />
         ))
       ) : (
@@ -54,9 +57,9 @@ const ListCard = ({
   );
 };
 
-const Card = ({ name, image }) => {
+const Card = ({ name, image, isDark }) => {
   return (
-    <CardContainer to={routes.project(name)}>
+    <CardContainer to={routes.project(name)} isDark={isDark}>
       <LCImage imageUrl={image} />
       <LCTitle level={2}>{name}</LCTitle>
     </CardContainer>
