@@ -11,6 +11,7 @@ import {
 import IngredientsAndToolsList from "../components/Recipe/IngredientsAndToolsList/IngredientsAndToolsList";
 import StepsList from "../components/Recipe/StepsList/StepsList";
 import RecipeThumbnail from "../components/Recipe/RecipeThumbnail/RecipeThumbnail";
+import BackButton from "../components/Recipe/BackButton/BackButton";
 
 import ActiveTags from "../components/Index/ActiveTags/ActiveTags";
 
@@ -36,6 +37,7 @@ const Recipe = ({ data }) => {
   return (
     <Layout>
       <SEO title={recipeData.title} />
+      <BackButton />
       <IndexHeader level={1}>{recipeData.title}</IndexHeader>
       <RecipeThumbnail path={thumbnail.path} />
       <ActiveTags

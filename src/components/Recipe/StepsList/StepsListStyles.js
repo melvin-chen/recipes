@@ -8,10 +8,19 @@ export const StepsListContainer = styled(Col)`
     padding: 0;
   }
   @media (max-width: ${SIZES.BREAK_TABLET}) {
-    margin: 30px 40px 0;
+    margin: 0px 40px 0;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    margin: 30px 20px 0;
+    margin: 0px 20px 0;
   }
+`;
+
+export const OrderedStep = styled.ol`
+  padding-left: 0px;
+  margin-left: 60px;
+`;
+
+export const OrderedList = styled.li`
+  padding-left: 5px;
 `;

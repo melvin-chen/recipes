@@ -9,11 +9,11 @@ export const IngredientsAndToolsListContainer = styled(Col)`
     padding: 0;
   }
   @media (max-width: ${SIZES.BREAK_TABLET}) {
-    margin: 30px 40px 0;
+    margin: 0px 40px 0;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    margin: 30px 20px 0;
+    margin: 0px 20px 0;
   }
 `;
 
