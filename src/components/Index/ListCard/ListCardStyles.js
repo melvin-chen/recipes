@@ -3,6 +3,8 @@ import styled from "styled-components";
 import "antd/dist/antd.css";
 import { SIZES } from "../../../tokens";
 import { Link } from "gatsby";
+import * as plate from "../../../images/plate.svg"
+// import { plate } from "../../../images/plate.svg"
 
 const { Title } = Typography;
 
@@ -87,5 +89,24 @@ export const LCImage = styled.div`
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
     height: 200px;
     width: 100%;
+  }
+`;
+
+export const EmptyState = styled.div`
+  margin: auto;
+`;
+
+export const ESImageContainer = styled.div`
+  background-image: url(${ plate });
+  background-repeat: no-repeat;
+  height: 200px;
+  background-size: auto;
+`;
+
+export const ESText = styled(Title)`
+  &.ant-typography {
+    margin: 40px 0 10px;
+    font-size: 1.5em;
+    text-align: center;
   }
 `;

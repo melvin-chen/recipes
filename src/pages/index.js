@@ -33,17 +33,13 @@ const IndexPage = ({ data }) => {
   const recipeList = data.takeshape.getSingleRecipeList;
   const tagsList = data.takeshape.getTagsList;
   const typeList = data.takeshape.getTypeList;
-  console.log(recipeList);
 
   const [titleInput, setTitleInput] = useState("");
   const [currentTags, setTagsInput] = useState([]);
   const [currentType, setCurrentType] = useState("");
 
   const handleRemoveTag = selectedTag => {
-    console.log(selectedTag);
-    console.log(currentTags);
     let copy = currentTags.filter(tag => tag !== selectedTag);
-    console.log(copy);
     setTagsInput(copy);
   };
 
@@ -60,7 +56,6 @@ const IndexPage = ({ data }) => {
             ? setTagsInput(old => [...old, selectedTag])
             : null
         }
-        // tagsFilterCallback={(event) => console.log('nonon')}
         tagsList={tagsList}
         typeList={typeList}
       />
