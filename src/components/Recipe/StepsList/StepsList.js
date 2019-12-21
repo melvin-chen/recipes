@@ -1,7 +1,11 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import { StepsListContainer } from "./StepsListStyles";
+import {
+  StepsListContainer,
+  OrderedStep,
+  OrderedList
+} from "./StepsListStyles";
 
 const StepsList = ({ steps }) => {
   const isMultiSections = steps.section.length > 1;
@@ -20,17 +24,17 @@ const Section = ({ section, showTitle }) => {
   return (
     <div>
       {showTitle && <h1>{section.title}</h1>}
-      <ol>
+      <OrderedStep>
         {section.stepItems &&
           section.stepItems.map(({ step }) => <Step step={step} />)}
         {!showTitle && !section.stepItems && <Step step={section.title} />}
-      </ol>
+      </OrderedStep>
     </div>
   );
 };
 
 const Step = ({ step }) => {
-  return <li>{step}</li>;
+  return <OrderedList>{step}</OrderedList>;
 };
 
 export default StepsList;
