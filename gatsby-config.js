@@ -14,6 +14,7 @@ module.exports = {
       }
     },
     "gatsby-plugin-react-helmet",
+    "gatsby-plugin-netlify-cache",
     {
       resolve: "gatsby-source-graphql",
       options: {
