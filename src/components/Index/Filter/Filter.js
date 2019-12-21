@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import {
   FilterContainer,
   FilterInput,
@@ -13,11 +13,6 @@ import { AutoComplete, Select } from "antd";
 const { Option } = Select;
 
 const Filter = props => {
-  console.log(props.typeList);
-  console.log(props.tagsList);
-  // const [typeList, setTypeList] = useState(props.typeList);
-
-  // pushTag = selectedTag => {};
 
   return (
     <FilterContainer>

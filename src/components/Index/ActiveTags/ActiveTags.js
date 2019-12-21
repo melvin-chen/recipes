@@ -4,7 +4,6 @@ import { ActiveTagsContainer, ActiveTag } from "./ActiveTagsStyles";
 const ActiveTags = props => {
   return (
     <ActiveTagsContainer>
-      {console.log(props.currentTags)}
       {props.currentTags.map((item, index) => (
           <ActiveTag
             closable
