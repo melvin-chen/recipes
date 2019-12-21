@@ -1,4 +1,6 @@
 import React from "react";
+import PropTypes from "prop-types";
+
 import { ActiveTagsContainer, ActiveTag } from "./ActiveTagsStyles";
 
 const ActiveTags = props => {
@@ -13,9 +15,14 @@ const ActiveTags = props => {
           >
             {item}
           </ActiveTag>
-      ))}
-    </ActiveTagsContainer>
-  );
+        ))}
+      </ActiveTagsContainer>
+    );
+  }
+};
+
+ActiveTags.defaultProps = {
+  isClosable: true
 };
 
 export default ActiveTags;
