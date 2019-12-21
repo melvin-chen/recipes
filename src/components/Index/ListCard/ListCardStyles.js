@@ -14,14 +14,14 @@ export const ListCardContainer = styled.div`
   justify-content: space-between;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 30px 80px;
+  padding: 10px 80px 30px;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
-    padding: 30px 40px;
+    padding: 10px 40px 30px;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    padding: 15px 20px;
+    padding: 10px 20px 15px;
   }
 `;
 
