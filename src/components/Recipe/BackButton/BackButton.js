@@ -5,7 +5,7 @@ const BackButton = () => {
   return (
     <BackButtonLink>
       <BackButtonIcon type="left" />
-      back
+      Back
     </BackButtonLink>
   );
 };

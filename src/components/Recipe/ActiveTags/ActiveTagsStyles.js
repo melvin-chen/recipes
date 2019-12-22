@@ -8,13 +8,6 @@ export const ActiveTagsContainer = styled.div`
   flex-direction: row;
   flex-wrap: wrap;
   box-sizing: border-box;
-  padding: 0 80px;
-  @media (max-width: ${SIZES.BREAK_TABLET}) {
-    padding: 0 40px;
-  }
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    padding: 15px 20px;
-  }
 `;
 
 export const ActiveTag = styled(Tag)`

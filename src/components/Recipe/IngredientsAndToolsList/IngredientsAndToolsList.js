@@ -5,28 +5,31 @@ import {
   IngredientsAndToolsListContainer,
   IngredientsListItem,
   Message,
-  ItemsListContainer
+  ItemsListContainer,
+  IList
 } from "./IngredientsListStyles";
 
-import { IndexSubheader } from "../../Index/IndexComponents/IndexComponentsStyles";
+import Title from "antd/lib/typography/Title";
 
 const ItemsList = ({ title, listItems }) => {
   const isEmpty = listItems.length === 0;
   return (
     <ItemsListContainer>
-      <h1>{title}</h1>
-      {!isEmpty &&
-        listItems.map(function({ item }) {
-          return <ListItem item={item} />;
-        })}
-      {isEmpty && <Message>None</Message>}
+      <Title level={2}>{title}</Title>
+      <IList>
+        {!isEmpty &&
+          listItems.map(function({ item }) {
+            return <ListItem item={item} />;
+          })}
+        {isEmpty && <Message>None</Message>}
+      </IList>
     </ItemsListContainer>
   );
 };
 
 const IngredientsAndToolsList = ({ ingredients, tools }) => {
   return (
-    <IngredientsAndToolsListContainer xs={24} m={8} lg={8}>
+    <IngredientsAndToolsListContainer>
       <ItemsList title="Ingredients" listItems={ingredients} />
       <ItemsList title="Tools" listItems={tools} />
     </IngredientsAndToolsListContainer>
