@@ -9,11 +9,12 @@ import {
   LCTitle,
   EmptyState,
   ESImageContainer,
-  ESText
+  ESText,
+  LCTag,
+  LCTagContainer
 } from "./ListCardStyles";
 
 import routes from "../../../routes.js";
-import { useCookies } from "react-cookie";
 
 const ListCard = ({
   currentType,
@@ -22,7 +23,6 @@ const ListCard = ({
   listItems,
   isDark
 }) => {
-
   let postFilterList = listItems.filter(
     item =>
       //title search query
@@ -46,6 +46,7 @@ const ListCard = ({
             key={index}
             index={index}
             name={card.title}
+            tags={card.tags}
             image={getImageUrl(card.thumbnail.path)}
             isDark={isDark}
           />
@@ -57,11 +58,16 @@ const ListCard = ({
   );
 };
 
-const Card = ({ name, image, isDark }) => {
+const Card = props => {
   return (
-    <CardContainer to={routes.project(name)} isDark={isDark}>
-      <LCImage imageUrl={image} />
-      <LCTitle level={2}>{name}</LCTitle>
+    <CardContainer to={routes.project(props.name)} isDark={props.isDark}>
+      <LCImage imageUrl={props.image} />
+      <LCTitle level={2}>{props.name}</LCTitle>
+      <LCTagContainer>
+        {props.tags.map((tag, index) => (
+          <LCTag index={index}>{tag.name}</LCTag>
+        ))}
+      </LCTagContainer>
     </CardContainer>
   );
 };
