@@ -1,7 +1,6 @@
 import { Tag, Typography } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
-import { SIZES } from "../../../tokens";
 
 export const ActiveTagsContainer = styled.div`
   display: flex;
