@@ -1,10 +1,23 @@
 import styled from "styled-components";
-import { Row, Col, Typography } from 'antd';
+import { Row, Col, Typography } from "antd";
+import { SIZES } from "../../tokens";
 
-const { Title } = Typography
+const { Title } = Typography;
 
 export const RecipeContainer = styled(Row)`
-  padding: 0 80px;
+  padding: 30px 80px 0;
+
+  @media (max-width: ${SIZES.BREAK_LG}) {
+    padding: 30px 80px 0;
+  }
+
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
+    padding: 30px 40px 0;
+  }
+
+  @media (max-width: ${SIZES.BREAK_MOBILE}) {
+    padding: 30px 20px 0;
+  }
 `;
 
 export const RecipeLeft = styled(Col)`

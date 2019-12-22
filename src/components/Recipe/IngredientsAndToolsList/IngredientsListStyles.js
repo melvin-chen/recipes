@@ -27,6 +27,15 @@ export const IngredientsListItem = styled.li`
 
 export const IList = styled.ul`
   padding-left: 30px;
+
+
+  @media (max-width: ${SIZES.BREAK_TABLET}) {
+    padding-left: 30px;
+  }
+
+  @media (max-width: ${SIZES.BREAK_MOBILE}) {
+    padding-left: 0px;
+  }
 `;
 
 export const Message = styled.p`
