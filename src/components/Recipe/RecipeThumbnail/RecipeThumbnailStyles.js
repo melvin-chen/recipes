@@ -8,20 +8,20 @@ export const ThumbnailContainer = styled.div`
   margin: 0px 80px 20px 80px;
 
   @media (min-width: ${SIZES.BREAK_LG}) {
-    width: 500px;
+    width: 300px;
   }
 
   @media (max-width: ${SIZES.BREAK_LG}) {
-    width: 500px;
+    width: 300px;
   }
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
-    width: 400px;
+    width: 150px;
     margin: 30px 40px 0;
   }
 
   @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    width: 200px;
+    width: 150px;
     margin: 30px 20px 0;
   }
 `;

@@ -34,6 +34,7 @@ export const IndexSubheader = styled(Text)`
 
 export const DarkSwitch = styled(Switch)`
   &.ant-switch {
+    z-index: 1;
     position: fixed;
     bottom: 15px;
     right: 15px;
