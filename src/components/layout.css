@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Noto Sans Semicondensed";
+    src: url("../fonts/NotoSans-SemiCondensedBold.woff");
+    font-weight: bold;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: "Noto Sans Semicondensed";
+    src: url("../fonts/NotoSans-SemiCondensedBoldItalic.woff");
+    font-weight: bold;
+    font-style: italic;
+  }
