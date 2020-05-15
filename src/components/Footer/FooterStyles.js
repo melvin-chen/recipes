@@ -1,5 +1,4 @@
 import styled from "styled-components"
-import { BBp } from "../Base/fonts"
 import { PaddedComponentWrapper, Link, OutsideLink } from "../Base/basecomponents"
 
 export const FooterContainer = styled.footer`
@@ -34,7 +33,7 @@ export const FooterLogo = styled.img`
 
 `
 
-export const FooterCopyright = styled(BBp)`
+export const FooterCopyright = styled.p`
     color: white;
     margin: 20px 0 20px 0;
 `
@@ -51,7 +50,7 @@ export const SocialLogo = styled.img`
     height: 25px;
 `
 
-export const ScoutTag = styled(BBp)`
+export const ScoutTag = styled.p`
     color: white;
     margin: 35px 0 0 0;
 `
@@ -71,7 +70,7 @@ export const FooterListContainer = styled.div`
     margin: 0 25px 0 25px;
 `
 
-export const ListTitle = styled(BBp)`
+export const ListTitle = styled.p`
     text-transform: uppercase;
     font-weight: bold;
     color: white;
@@ -93,7 +92,7 @@ export const ScoutLink = styled(OutsideLink)`
     text-decoration: none;
 `
 
-export const Item = styled(BBp)`
+export const Item = styled.p`
     color: white;
 `
 
