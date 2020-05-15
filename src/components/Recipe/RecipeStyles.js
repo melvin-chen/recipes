@@ -6,6 +6,7 @@ const { Title } = Typography;
 
 export const RecipeContainer = styled(Row)`
   padding: 30px 80px 0;
+  margin: 0 !important;
 
   @media (max-width: ${SIZES.BREAK_LG}) {
     padding: 30px 80px 0;

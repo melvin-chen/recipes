@@ -22,5 +22,6 @@ export const CustomContentWrapper = styled.div`
   .ant-tag {
     transition: background-color 300ms;
     background-color: ${props => (props.isDark ? "#232222" : "white")};
+    margin-bottom: 8px;
   }
 `;
