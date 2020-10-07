@@ -3,7 +3,7 @@ import React from "react";
 import { BackButtonLink, BackButtonIcon } from "./BackButtonStyles";
 const BackButton = () => {
   return (
-    <BackButtonLink>
+    <BackButtonLink to={"/"}>
       <BackButtonIcon type="left" />
       Back
     </BackButtonLink>

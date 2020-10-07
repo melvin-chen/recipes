@@ -7,7 +7,7 @@ import SEO from "../components/seo";
 import {
   IndexHeader,
   IndexSubheader,
-  DarkSwitch
+  DarkSwitch,
 } from "../components/Index/IndexComponents/IndexComponentsStyles";
 import Filter from "../components/Index/Filter/Filter";
 import ListCard from "../components/Index/ListCard/ListCard";
@@ -46,7 +46,7 @@ const IndexPage = ({ data }) => {
   const [cookies, setCookie] = useCookies(["isDark"]);
 
   //This is bad practice to manipulate dom directly but necessary to toggle dom body color
-  const toggleBodyColor = isDark => {
+  const toggleBodyColor = (isDark) => {
     if (ExecutionEnvironment.canUseDOM) {
       document.body.style.transition = "background-color 300ms";
       isDark
@@ -55,7 +55,7 @@ const IndexPage = ({ data }) => {
     }
   };
 
-  const toggleLightMode = isDark => {
+  const toggleLightMode = (isDark) => {
     // cookie will last 30 days
     const today = new Date();
     let expirationDate = new Date();
@@ -76,16 +76,20 @@ const IndexPage = ({ data }) => {
           unCheckedChildren={<Sun size={14} style={{ display: "block" }} />}
           checkedChildren={<Moon size={16} style={{ display: "block" }} />}
           defaultChecked={cookies.isDark === "true"}
-          onChange={checked => {
+          onChange={(checked) => {
             toggleLightMode(checked);
           }}
         />
-        <IndexHeader level={1}>Slightly tweaked recipes</IndexHeader>
-        <IndexSubheader>sometimes edited by a couple people</IndexSubheader>
+        <IndexHeader level={1}>
+          Definitely <em>Not</em> Stolen Recipes
+        </IndexHeader>
+        <IndexSubheader>
+          (they're sometimes edited by a couple people)
+        </IndexSubheader>
         <Filter
-          titleFilterCallback={title => setTitleInput(title)}
-          typeFilterCallback={selectedType => setCurrentType(selectedType)}
-          tagsFilterCallback={selectedTags => setTagsInput(selectedTags)}
+          titleFilterCallback={(title) => setTitleInput(title)}
+          typeFilterCallback={(selectedType) => setCurrentType(selectedType)}
+          tagsFilterCallback={(selectedTags) => setTagsInput(selectedTags)}
           tagsList={tagsList}
           typeList={typeList}
         />
