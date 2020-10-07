@@ -6,13 +6,14 @@ import {
   OrderedStep,
   OrderedList
 } from "./StepsListStyles";
+import Title from "antd/lib/typography/Title";
 
 const StepsList = ({ steps }) => {
   const isMultiSections = steps.section.length > 1;
 
   return (
-    <StepsListContainer xs={24} m={16} lg={16}>
-      <h1>Steps</h1>
+    <StepsListContainer>
+      <Title level={2}>Steps</Title>
       {steps.section.map(s => (
         <Section section={s} showTitle={isMultiSections} />
       ))}
@@ -23,7 +24,7 @@ const StepsList = ({ steps }) => {
 const Section = ({ section, showTitle }) => {
   return (
     <div>
-      {showTitle && <h1>{section.title}</h1>}
+      {showTitle && <Title level={3}>{section.title}</Title>}
       <OrderedStep>
         {section.stepItems &&
           section.stepItems.map(({ step }) => <Step step={step} />)}

@@ -1,6 +1,5 @@
 import styled from "styled-components"
 import { Link, Button } from "../Base/basecomponents"
-import { BBh4 } from "../Base/fonts"
 import { richBlack } from "../Base/colors"
 
 export const HeaderWrapper = styled.header`
@@ -80,7 +79,7 @@ export const HeaderLogo = styled.img`
     padding-bottom: 0;
   }
 `
-export const HeaderPage = styled(BBh4)`
+export const HeaderPage = styled.h4`
   font-size: 1em; 
 `
 

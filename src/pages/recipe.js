@@ -18,15 +18,20 @@ import { Sun, Moon } from "react-feather";
 import { CustomContentWrapper } from "../components/Base/ContentWrapperStyles";
 
 import ActiveTags from "../components/Recipe/ActiveTags/ActiveTags";
+import {
+  RecipeContainer,
+  RecipeRight,
+  RecipeLeft,
+  RecipeHeader,
+} from "../components/Recipe/RecipeStyles";
 var ExecutionEnvironment = require("exenv");
-
 
 const Recipe = ({ data }) => {
   const recipeData = data.takeshape.getSingleRecipe;
   console.log(recipeData);
   const [cookies, setCookie] = useCookies(["isDark"]);
 
-    //This is bad practice to manipulate dom directly but necessary to toggle dom body color
+  //This is bad practice to manipulate dom directly but necessary to toggle dom body color
   const toggleBodyColor = isDark => {
     if (ExecutionEnvironment.canUseDOM) {
       document.body.style.transition = "background-color 300ms";
@@ -48,10 +53,10 @@ const Recipe = ({ data }) => {
 
   toggleBodyColor(cookies.isDark === "true");
 
-  
   if (!recipeData) {
     return <p>Nothing</p>;
   }
+
   const thumbnail = recipeData.thumbnail;
   const ingredients = recipeData.ingredientSection.foodItems
     ? recipeData.ingredientSection.foodItems
@@ -69,8 +74,7 @@ const Recipe = ({ data }) => {
     <Layout>
       <SEO title={recipeData.title} />
       <CustomContentWrapper isDark={cookies.isDark === "true"}>
-
-      <BackButton />
+        <BackButton />
         <DarkSwitch
           unCheckedChildren={<Sun size={14} style={{ display: "block" }} />}
           checkedChildren={<Moon size={16} style={{ display: "block" }} />}
@@ -79,13 +83,17 @@ const Recipe = ({ data }) => {
             toggleLightMode(checked);
           }}
         />
-      <IndexHeader level={1}>{recipeData.title}</IndexHeader>
-      <RecipeThumbnail path={thumbnail.path} />
-      <ActiveTags
-        currentTags={currentTags}
-      />
-      <IngredientsAndToolsList ingredients={ingredients} tools={tools} />
-      <StepsList steps={steps} />
+        <RecipeContainer gutter={16}>
+          <RecipeLeft xs={24} m={8} lg={8}>
+            <RecipeThumbnail path={thumbnail.path} />
+            <RecipeHeader level={1}>{recipeData.title}</RecipeHeader>
+            <ActiveTags currentTags={currentTags} />
+            <IngredientsAndToolsList ingredients={ingredients} tools={tools} />
+          </RecipeLeft>
+          <RecipeRight xs={24} m={16} lg={16}>
+            <StepsList steps={steps} />
+          </RecipeRight>
+        </RecipeContainer>
       </CustomContentWrapper>
     </Layout>
   );

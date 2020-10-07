@@ -1,9 +1,9 @@
-import { Typography } from "antd";
+import { Typography, Tag } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 import { SIZES } from "../../../tokens";
 import { Link } from "gatsby";
-import * as plate from "../../../images/plate.svg"
+import * as plate from "../../../images/plate.svg";
 // import { plate } from "../../../images/plate.svg"
 
 const { Title } = Typography;
@@ -31,8 +31,8 @@ export const CardContainer = styled(Link)`
   box-sizing: border-box;
   width: 23%;
   margin-top: 30px;
-  background-color: ${props => props.isDark ? "#232323" : "#fff" };
-  border: ${props => props.isDark ? "none" : "1px solid #ececec" };
+  background-color: ${props => (props.isDark ? "#232323" : "#fff")};
+  border: ${props => (props.isDark ? "none" : "1px solid #ececec")};
   background-clip: content-box;
   border-radius: 5px;
   transition: box-shadow 100ms;
@@ -53,19 +53,33 @@ export const CardContainer = styled(Link)`
   }
 `;
 
+export const LCTag = styled(Tag)`
+  &.ant-tag {
+    margin-bottom: 5px;
+    text-align: center;
+  }
+`;
+
+export const LCTagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 0 25px 20px;
+`;
+
 export const LCTitle = styled(Title)`
   &.ant-typography {
-    margin: 20px 25px 35px;
+    margin: 20px 25px;
     font-size: 1.5em;
     text-align: center;
 
     @media (max-width: ${SIZES.BREAK_TABLET}) {
       font-size: 1.25em;
-      margin: 20px 25px 35px;
+      margin: 20px 25px;
     }
 
     @media (max-width: ${SIZES.BREAK_TABLET}) {
-      margin: 20px 25px 35px;
+      margin: 20px 25px;
     }
   }
 `;
@@ -96,7 +110,7 @@ export const EmptyState = styled.div`
 `;
 
 export const ESImageContainer = styled.div`
-  background-image: url(${ plate });
+  background-image: url(${plate});
   background-repeat: no-repeat;
   height: 200px;
   background-size: auto;

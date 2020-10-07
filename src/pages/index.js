@@ -66,6 +66,7 @@ const IndexPage = ({ data }) => {
   };
 
   toggleBodyColor(cookies.isDark === "true");
+  console.log(cookies.isDark);
 
   return (
     <Layout>

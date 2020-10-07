@@ -5,24 +5,11 @@ import { SIZES } from "../../../tokens";
 
 export const ThumbnailContainer = styled.div`
   display: flex;
-  margin: 0px 80px 20px 80px;
-
-  @media (min-width: ${SIZES.BREAK_LG}) {
-    width: 300px;
-  }
-
-  @media (max-width: ${SIZES.BREAK_LG}) {
-    width: 300px;
-  }
+  width: 150px;
+  padding: 20px 0 15px;
 
   @media (max-width: ${SIZES.BREAK_TABLET}) {
-    width: 150px;
-    margin: 30px 40px 0;
-  }
-
-  @media (max-width: ${SIZES.BREAK_MOBILE}) {
-    width: 150px;
-    margin: 30px 20px 0;
+    display: none;
   }
 `;
 
