@@ -1,4 +1,4 @@
-import { Tag, Typography } from "antd";
+import { Tag } from "antd";
 import styled from "styled-components";
 import "antd/dist/antd.css";
 

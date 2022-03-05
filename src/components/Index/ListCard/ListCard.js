@@ -1,4 +1,3 @@
-import PropTypes from "prop-types";
 import React from "react";
 import { getImageUrl } from "takeshape-routing";
 /* TODO: replace this default image */

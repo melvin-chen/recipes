@@ -1,4 +1,3 @@
-import { Col } from "antd";
 import styled from "styled-components";
 
 import { SIZES } from "../../../tokens";

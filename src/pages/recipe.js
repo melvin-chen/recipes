@@ -1,15 +1,11 @@
 import React from "react";
 import { graphql } from "gatsby";
-import { useCookies, withCookies } from "react-cookie";
+import { useCookies } from "react-cookie";
 
 import Layout from "../components/layout";
 import SEO from "../components/seo";
 
-import {
-  IndexHeader,
-  IndexSubheader,
-  DarkSwitch
-} from "../components/Index/IndexComponents/IndexComponentsStyles";
+import { DarkSwitch } from "../components/Index/IndexComponents/IndexComponentsStyles";
 import IngredientsAndToolsList from "../components/Recipe/IngredientsAndToolsList/IngredientsAndToolsList";
 import StepsList from "../components/Recipe/StepsList/StepsList";
 import RecipeThumbnail from "../components/Recipe/RecipeThumbnail/RecipeThumbnail";
@@ -66,7 +62,7 @@ const Recipe = ({ data }) => {
     : [];
   const steps = recipeData.stepSection ? recipeData.stepSection : [];
   const tags = recipeData.tags ? recipeData.tags : [];
-  const currentTags = tags.map(function(item) {
+  const currentTags = tags.map(function (item) {
     return item["name"];
   });
 

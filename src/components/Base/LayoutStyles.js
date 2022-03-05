@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { Switch } from "antd";
 
 export const StyledBody = styled.div`
   transition: color 300ms, background-color 300ms;
